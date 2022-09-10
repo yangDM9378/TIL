@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>DETAIL</h1>
+<h1>{{ movies.pk }}번째 글</h1>
+<hr>
+<p>제목:{{ movies.title }}</p>
+<p>감독:{{ movies.director }}</p>
+<p>코멘트:{{ movies.comment }}</p>
+<a href="{% url 'movies:delete' movies.pk %}">
+  <input type="button" value='delete'>
+</a><br>
+<a href="{% url 'movies:update' movies.pk %}">[UPDATE]</a>
+<hr>
+<a href="{% url 'movies:index' %}">[back]</a>
+
+{% endblock content %}

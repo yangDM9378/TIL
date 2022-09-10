@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 align='end'>DETAIL</h1>
+<h1>{{ chat.user }}의 글</h1>
+<hr>
+<p>내용:{{ chat.content }}</p>
+<p>작성시간:{{ chat.created_at }}</p>
+<p>수정시간:{{ chat.updated_at }}</p>
+<hr>
+<a href="{% url 'application:edit' chat.pk %}">[EDIT]</a><br>
+<a href="{% url 'application:delete' chat.pk %}">
+  <input type="button" value=DELETE>
+</a><br>
+
+<a href="{% url 'application:detail' prev %}">[prev]</a>
+<a href="{% url 'application:detail' next %}">[next]</a><br>
+<a href="{% url 'application:index' %}">[back]</a>
+{% endblock content %}

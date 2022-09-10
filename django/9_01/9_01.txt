@@ -1,0 +1,127 @@
+<가상환경 세팅>
+1. 가상 환경 설치
+    $ python -m venv venv
+    결과 : venv 폴더 생성
+
+2. 가상 환경 활성화 및 확인
+    $ source venv/Scripts/activate
+
+    확인 명령어 : pip list
+    결과 : 기본적으로 설치된 패키지 2개 조회 가능
+
+3. 라이브러리 설치 및 저장
+    $ pip install django==3.2.13
+    확인 명령어 : pip list
+  - pip 패키지 requirements.txt 에 저장
+    $ pip freeze > requirements.txt
+  - 저장한 requirements.txt 로 환경 설정하기
+    $ pip install -r requirements.txt
+
+4. 프로젝트 생성
+    $ django-admin startproject firstpjt .
+    결과
+    - 설정한 프로젝트 이름의 폴더 생성
+    - 기본적으로 설치되어야할 파일들 확인
+
+5. 앱 생성
+    $ python manage.py startapp articles
+    결과
+    - 설정한 앱 이름의 폴더 생성
+    - 기본적으로 설치되어야할 파일들 확인
+
+6. 앱 등록
+    - settings.py 설정
+
+7. 프로젝트 urls 작성
+    - 바로 include 사용하세요
+
+8. 앱 urls 작성
+    - views 로 매핑
+
+9. views 작성
+    - index.html 랜더링
+
+10. templates 작성
+    - index.html 작성
+    폴더 구조 : articles/templates/articles/index.html
+
+<상속>
+
+
+BASE_DIR(초기 폴더) 내부에 templates 만들고 base.html설정
+
+- base.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    {% endblock content %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</body>
+</html>
+
+-seting  templates  DIRS설정\
+'DIRS': [BASE_DIR / 'templates']
+
+index.html 파일 설정
+- index.html
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Index page</h1>
+{% endblock content %}
+
+
+<<DB>>
+
+python manage.py makemigrations
+
+python manage.py migrate
+
+<편하게보기DB>
+pip install ipython
+pip install django-extensions
+-setting 
+INSTALLED_APPS에 'django_extensions' 추가
+python manage.py shell_plus 실행
+
+
+Article.objects.all()->전체보기
+생성
+1방법
+article = Article()->변수에 담기
+article.(KEY)=(저장내용)->저장하기
+article.save()->DB에 반영
+2방법
+article=Article(title='second',content='django2')
+article.save()
+3방법
+Article.objects.create(title='third', content='django3')
+
+조회
+전체조회
+Article.objects.all()
+부분조회(하나가 아닐수도 있음)
+Article.objects.filter(title='first')
+- 조회된 객체가 없어도 Queryset반환
+단일조회
+Article.object.get(pk=1)
+- pk 등 고유한 값으로 조회
+
+수정
+단일 조회
+내용 변경
+save()
+
+삭제
+단일 조회
+내용 변경
+
+
+Article.objects.get(pk=1)->pk=1 찾아 가져오기

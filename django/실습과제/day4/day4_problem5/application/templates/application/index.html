@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 align='end'>자유게시판</h1>
+<a href="{% url 'application:new' %}">잡담하기</a>
+<hr>
+{% for i in chat %}
+  <p>작성자 {{ i.user }}</p>
+  <p>내용 {{ i.content }}</p>
+  <a href="{% url 'application:detail' i.pk %}">[detail]</a><br>
+  <a href="{% url 'application:edit' i.pk %}">[EDIT]</a><br>
+  <a href="{% url 'application:delete' i.pk %}">
+    <input type="button" value=DELETE>
+  </a>
+  <hr>
+
+{% endfor %}
+
+
+{% endblock content %}

@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>catch</h1>
+    <a href={% url 'articles:throw' %}>다시던지러 ㄱㄱ</a>
+    <p>{{ message }}</p>
+{% endblock content %}

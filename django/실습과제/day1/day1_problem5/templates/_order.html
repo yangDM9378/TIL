@@ -1,0 +1,6 @@
+  <form action="{% url 'menus:receipt' %}" method='POST'>
+    {% csrf_token %}
+    <label for="order">주문란 : </label>
+    <input type="text" id='order' name='order'>
+    <input type="submit">
+  </form>
