@@ -1,70 +1,65 @@
+# T=int(input())
+# def kkk(k):
+#     global li
+#     if len(k)==1:
+#         li.append(k.pop())
+#         return
+#     stack=[]
+#     while k:
+#         if len(k) % 2 == 0:
+#             b = k.pop()
+#             a = k.pop()
+#             c = res(a, b)
+#             stack.append(c)
+#         else:
+#             stack.append(k.pop())
+#             b = k.pop()
+#             a = k.pop()
+#             c = res(a, b)
+#             stack.append(c)
+#
+#     kkk(stack[::-1])
+#
+# def res(a,b):
+#     temp=a[0]-b[0]
+#     if temp==-1 or temp==2:
+#         return b
+#     return a
+#
+# for t in range(T):
+#     N=int(input())
+#     arr=list(map(int, input().split()))
+#     arr_r=[]
+#     arr_l=[]
+#     li=[]
+#     for i in range(1, (1+N)//2+1):
+#         arr_l.append([arr[i-1],i])
+#     for j in range((1+N)//2+1, N+1):
+#         arr_r.append([arr[j-1],j])
+#     print(arr_l)
+#     print(arr_r)
+#     kkk(arr_l)
+#     kkk(arr_r)
+#     b=li.pop()
+#     a=li.pop()
+#     result=res(a,b)
+#     print(f'#{t+1} {result[1]}')
+
 T=int(input())
-def kkk(k):
-    global li
-    print(k)
-    if len(k)==1:
-        li.append(k.pop())
-        return
-    stack=[]
-    while k:
-        if len(k) % 2 == 0:
-            b = k.pop()
-            a = k.pop()
-            c = res(a, b)
-            stack.append(c)
-        else:
-            stack.append(k.pop())
-            b = k.pop()
-            a = k.pop()
-            c = res(a, b)
-            stack.append(c)
-
-    kkk(stack[::-1])
-
+def kkk(s,l):
+    if s==l:
+        return s
+    a=kkk(s, (s+l)//2)
+    b=kkk((s+l)//2+1,l)
+    return res(a,b)
 def res(a,b):
-    if a[0]==1:
-        if b[0]==1:
-            if a[1]<b[1]:
-                return a
-            else:
-                return b
-        elif b[0]==2:
-            return b
-        else:
-            return a
-    elif a[0]==2:
-        if b[0]==1:
-            return a
-        elif b[0]==2:
-            if a[1] < b[1]:
-                return a
-            else:
-                return b
-        else:
-            return b
-    else:
-        if b[0]==1:
-            return b
-        elif b[0]==2:
-            return a
-        else:
-            if a[1] < b[1]:
-                return a
-            else:
-                return b
+    temp=arr[a]-arr[b]
+    if temp==-1 or temp==2:
+        return b
+    return a
+
 for t in range(T):
     N=int(input())
     arr=list(map(int, input().split()))
-    arr_r=[]
-    arr_l=[]
-    li=[]
-    for i in range(0, (N-1)//2+1):
-        arr_l.append([arr[i],i+1])
-    for j in range((N-1)//2+1, N):
-        arr_r.append([arr[j], j+1])
-    kkk(arr_l)
-    kkk(arr_r)
-    a=li.pop()
-    b=li.pop()
-    result=res(a,b)
-    print(f'#{t+1} {result[1]}')
+    result=kkk(0,N-1)
+    print(f'#{t+1} {result+1}')
