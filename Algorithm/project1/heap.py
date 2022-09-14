@@ -13,7 +13,7 @@ def insert(value):
     while 1:
         parents=now//2 # 부모인덱스
         if parents==0: break #부모인덱스가 0 (처음 루트노드에 값이 들어가면 비교할 것이 없으니까 )
-        if heap[parents]>=heap[now]:break # 부모>자식
+        if heap[parents]<=heap[now]:break # 부모>자식
         heap[parents],heap[now]=heap[now],heap[parents] #자식이 더 크면 swap
         now=parents # 스왑 후 그 위의 부모랑 또 비교
 
@@ -32,8 +32,8 @@ def pop():
     while 1:
         son=now*2 # 왼쪽자식
         rson=son+1 # 오른쪽 자식
-        if rson<=hindex and heap[son]<heap[rson]: son=rson #오른쪽 자식이 있으면 #오른쪽 자식과 왼쪽자식 비교 (부모랑 비교할 대상 정하기)
-        if son>hindex or heap[now]>heap[son]: break # 부모(now) 랑 아들이랑 비교
+        if rson<=hindex and heap[son]>heap[rson]: son=rson #오른쪽 자식이 있으면 #오른쪽 자식과 왼쪽자식 비교 (부모랑 비교할 대상 정하기)
+        if son>hindex or heap[now]<heap[son]: break # 부모(now) 랑 아들이랑 비교
         heap[now],heap[son]=heap[son],heap[now] #부모가 더 작으면 swap
         now=son # swap 후 또 그 아래의 아들과 비교
 
