@@ -52,7 +52,6 @@ def findboss(member):
 # union 함수
 def union(a,b):
     global arr
-
     fa,fb=findboss(a),findboss(b)
     if fa==fb:return 1
     arr[ord(fb)]=fa
