@@ -198,27 +198,27 @@ def digging(y,x):
         if dy<0 or dx<0 or dy>2 or dx>2: continue
         arr[dy][dx]=(arr[dy][dx]*7)%10
 
-def getsum():
-    sum=0
-    for i in range(3):
-        for j in range(3):
-            sum+=arr[i][j]
-    return sum
-
-def dfs(level):
-    global Max,arr
-    backup=copy.deepcopy(arr)
-
-    if level==3:
-        ret=getsum()
-        Max=max(Max,ret)
-        return
-
-    for i in range(3):
-        for j in range(3):
-            digging(i,j)
-            dfs(level+1)
-            arr=copy.deepcopy(backup)
-
-dfs(0)
-print(Max)
+# def getsum():
+#     sum=0
+#     for i in range(3):
+#         for j in range(3):
+#             sum+=arr[i][j]
+#     return sum
+#
+# def dfs(level):
+#     global Max,arr
+#     backup=copy.deepcopy(arr)
+#
+#     if level==3:
+#         ret=getsum()
+#         Max=max(Max,ret)
+#         return
+#
+#     for i in range(3):
+#         for j in range(3):
+#             digging(i,j)
+#             dfs(level+1)
+#             arr=copy.deepcopy(backup)
+#
+# dfs(0)
+# print(Max)

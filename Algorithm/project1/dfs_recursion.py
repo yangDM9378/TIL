@@ -1,22 +1,22 @@
 
-# # 트리모양 DFS
-# name=['A','B','C','D','E','F']
-# arr=[[0,1,1,0,0,0],
-#     [0,0,0,1,1,0],
-#     [0,0,0,0,0,1],
-#     [0,0,0,0,0,0],
-#     [0,0,0,0,0,0],
-#     [0,0,0,0,0,0]]
-#
-# li=[]
-# def dfs(now):
-#     global li
-#     li.append(name[now])
-#     for i in range(6):
-#         if arr[now][i]==1:
-#             dfs(i)
-# dfs(0)
-# print(li)
+# 트리모양 DFS
+name=['A','B','C','D','E','F']
+arr=[[0,1,1,0,0,0],
+    [0,0,0,1,1,0],
+    [0,0,0,0,0,1],
+    [0,0,0,0,0,0],
+    [0,0,0,0,0,0],
+    [0,0,0,0,0,0]]
+
+li=[]
+def dfs(now):
+    global li
+    li.append(name[now])
+    for i in range(6):
+        if arr[now][i]==1:
+            dfs(i)
+dfs(0)
+print(li)
 
 #연습
 # name=['K','F','C','D','M','G','A']
@@ -202,40 +202,40 @@
 # else:
 #     print('도착 x')
 
-# 미로찾기 (DFS) _ 최단거리 출력
-# 최소 몇번 이동을 해야할까요???
-arr=[[0,0,0,0,1],
-     [1,0,1,0,1],
-     [1,0,1,0,1],
-     [0,0,0,0,0]]
-diry = [1, -1, 0, 0]
-dirx = [0, 0, -1, 1]
-used=[[0]*5 for _ in range(4)]
-cnt=0
-min_in=99999999999999
-def dfs(y,x):
-    global cnt
-    global min_in
-    if y==1 and x==3:
-        if min_in >= cnt:
-            min_in=cnt
-        return
-
-    for i in range(4):
-        dy=y+diry[i]
-        dx=x+dirx[i]
-        if dy<0 or dy>3 or dx<0 or dx>4:continue
-        if used[dy][dx]==1:continue
-        if arr[dy][dx]==1: continue
-        cnt+=1
-        used[dy][dx]=1
-        dfs(dy,dx)
-        cnt-=1
-        used[dy][dx]=0
-
-used[0][0]=1
-dfs(0,0)
-print(min_in)
+# # 미로찾기 (DFS) _ 최단거리 출력
+# # 최소 몇번 이동을 해야할까요???
+# arr=[[0,0,0,0,1],
+#      [1,0,1,0,1],
+#      [1,0,1,0,1],
+#      [0,0,0,0,0]]
+# diry = [1, -1, 0, 0]
+# dirx = [0, 0, -1, 1]
+# used=[[0]*5 for _ in range(4)]
+# cnt=0
+# min_in=99999999999999
+# def dfs(y,x):
+#     global cnt
+#     global min_in
+#     if y==1 and x==3:
+#         if min_in >= cnt:
+#             min_in=cnt
+#         return
+#
+#     for i in range(4):
+#         dy=y+diry[i]
+#         dx=x+dirx[i]
+#         if dy<0 or dy>3 or dx<0 or dx>4:continue
+#         if used[dy][dx]==1:continue
+#         if arr[dy][dx]==1: continue
+#         cnt+=1
+#         used[dy][dx]=1
+#         dfs(dy,dx)
+#         cnt-=1
+#         used[dy][dx]=0
+#
+# used[0][0]=1
+# dfs(0,0)
+# print(min_in)
 
 
 # # 미로 경로(여러개 경로갯수)
