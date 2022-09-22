@@ -23,8 +23,6 @@ import math
 #         check[j]=False
 # print(*answer)
 
-
-
 a=int(input())
 answer=[]
 check=[True]*(a+1)

@@ -25,11 +25,11 @@
 
 # n=int(input())
 # arr=list(map(int, input().split()))
-# arr.sort(reverse=True)
+# arr.sort()
+# print(arr)
 # answer=0
-# for i in range(1,n+1):
-#     answer+=(i*arr[i-1])
-#
+# for i in range(n):
+#     answer+=((n-i)*arr[i])
 # print(answer)
 
 
@@ -45,15 +45,15 @@
 # 22 24
 # 16 20
 # 15 19
-# n=int(input())
-# arr=[list(map(int, input().split())) for _ in range(n)]
-# arr.sort(key=lambda x:x[1])
-# print(arr)
-# end_time=-1
-# result=0
-# for i in range(n):
-#     if end_time<arr[i][0]:
-#         end_time=arr[i][1]
-#         result+=1
-# print(result)
-## 끝나는 시간 기준 솔트 후 시작시간과비교
+n=int(input())
+arr=[list(map(int, input().split())) for _ in range(n)]
+arr.sort(key=lambda x:x[1])
+print(arr)
+end_time=-1
+result=0
+for i in range(n):
+    if end_time<arr[i][0]:
+        end_time=arr[i][1]
+        result+=1
+print(result)
+# 끝나는 시간 기준 솔트 후 시작시간과비교
