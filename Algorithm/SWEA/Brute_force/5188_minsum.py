@@ -39,6 +39,3 @@
 #     Min=9999
 #     dfs(0,0,arr[0][0])
 #     print(f'#{t+1} {Min}')
-
-
-def bfs(y,x):
