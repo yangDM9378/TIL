@@ -28,5 +28,3 @@ for t in range(T):
     li[0][0]=0
     bfs(0,0)
     print(f'#{t+1} {li[N-1][N-1]}')
-
-
