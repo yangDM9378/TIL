@@ -29,8 +29,8 @@
 #
 # for i in range(len(arr)):
 #     print(heapq.heappop(heap))
-
-
+#
+#
 # maxheap
 # import heapq
 # arr=[4,87,4,2,4,6,8,7]
@@ -53,15 +53,15 @@
 #     heapq.heappush(heap,(-arr[i],arr[i]))
 # for i in range(len(arr)):
 #     print(heapq.heappop(heap)[1], end=' ')
-
-
-
-
-
-
-
-
-
-
-
-
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#

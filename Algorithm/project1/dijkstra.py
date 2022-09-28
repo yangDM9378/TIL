@@ -22,7 +22,7 @@ def select_ky():
     return Minindex
 
 def dijkstra():
-    for i in range(4):
+    for _ in range(4):
         via=select_ky() # 경유지 선택
         used[via]=1
         for j in range(5): # 모든 정점에 대한 비용을 비교
@@ -30,10 +30,11 @@ def dijkstra():
             ky=result[via]+arr[via][j] # 시->경->도
             if baro>ky:
                 result[j]=ky
+        print(result)
 dijkstra()
 print(*result)
 
-
+#
 # 개선된 다익스트라
 # 5
 # 7
