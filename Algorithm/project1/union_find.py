@@ -65,3 +65,32 @@ else:
 #         break
 # if answer:print("cycle 발견")
 # else: print("cyccle 미발견")
+
+
+# Union find (숫자)
+def find(node):
+    global parents
+    if parents[node] == node:
+        return node
+    ret = find(parents[node]) # 재귀적으로 부모 노드 탐색
+    parents[node] = ret # 부모 노드 갱신
+    return ret # 부모 노드 반환
+
+def union(a, b):
+    global parents
+    p_a, p_b = find(a), find(b)
+    if p_a == p_b: return True # 부모가 같은 경우 True(사이클 존재)
+    parents[p_b] = p_a
+
+
+n = int(input()) # 간선 갯수
+edge = [list(map(int, input().split())) for _ in range(n)] # 간선 정보
+parents = list(range(3)) # 각 노드의 부모를 자기 자신으로 초기화
+
+for i in range(n):
+    a, b = edge[i]
+    if union(a,b):
+        print("사이클 발견")
+        break
+else:
+    print("미발견")
