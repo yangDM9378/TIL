@@ -2,5 +2,5 @@ from django.urls import path
 app_name = 'accounts'
 urlpatterns = [
     ...
-    path('<int:__(a)__>/follow/', views.follow, name='follow'),
+    path('<int:user_pk>/follow/', views.follow, name='follow'),
 ]
