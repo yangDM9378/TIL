@@ -1,44 +1,43 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 <h1>{{ person.username }}님의 프로필</h1>
-<br>
-<div> 
-  <p>
-    팔로잉 : {{ person.followings.all|length }} / 팔로워 : {{ person.followers.all|length }}
-  </p>
-  {% if user != person %}
-    <div>
-      <form action="{% url 'accounts:follow' person.pk %}" method="POST">
-        {% csrf_token %}
-        {% if user in person.followers.all %}
-          <button class="btn btn-outline-primary btn-sm">팔로우 취소</button>
-        {% else %}
-          <button class="btn btn-primary btn-sm">팔로우</button>
-        {% endif %}
-      </form>
-    </div>
-  {% endif %}
+<hr>
+<div>
+    팔로워 : {{ person.followers.all|length }} / 팔로잉 : {{ person.followings.all|length }}
 </div>
+{% if request.user != person %}
+<div>
+  <form action="{% url 'accounts:follow' person.pk %}" method="POST">
+    {% csrf_token %}
+    {% if request.user in person.followers.all %}
+      <input type="submit" value='언팔로우'>
+    {% else %}
+      <input type="submit" value='팔로우'>
+    {% endif %}
+  </form>
+</div>
+{% endif %}
 
-<hr>
-
-<h2>{{ person.username }}'s 게시글</h2>
-<br>
-{% for movie in person.movie_set.all %}
-	<!-- person.article_set & person.comment_set -->
-	<div>{{ movie.title }}</div>
+<h2>{{ person.username }} 게시글</h2>
+{% for article in person.article_set.all %}
+  <div>{{ forloop.counter }}</div>
+  <div>{{ article.title }}</div>
 {% endfor %}
-
 <hr>
 
-<h2>{{ person.username }}'s 댓글</h2>
-<br>
+<h2>{{ person.username }} 댓글</h2>
 {% for comment in person.comment_set.all %}
+<div>{{ forloop.counter }}</div>
   <div>{{ comment.content }}</div>
 {% endfor %}
-
 <hr>
 
-<a href="{% url 'movies:index' %}" class="btn btn-secondary btn-sm">이전</a>
-{% endblock  %}
+<h2>{{ person.username }} 좋아요한 게시글</h2>
+{% for article in person.like_articles.all %}
+  <div>{{ article.title }}</div>
+{% endfor %}
+<hr>
+<a href="{% url 'articles:index' %}">index</a>
+{% endblock content %}
