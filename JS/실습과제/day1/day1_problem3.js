@@ -400,8 +400,20 @@ const movieInfo = {
   "total_results": 10000
 }
 
-for (const k of movieInfo["results"]) {
-    if (k["vote_average"] >= 8) {
-        console.log(k["title"])
+// for (const k of movieInfo["results"]) {
+//     if (k["vote_average"] >= 8) {
+//         console.log(k["title"])
+//     }
+// }
+
+// for (let i = 0; i > movieInfo.results.length; i++) {
+//     if (movieInfo.results[i].vote_average >= 8) {
+//         console.log(movieInfo.results[i].title)
+//     }
+// }
+
+movieInfo.results.forEach((movie) => {
+if (movie.vote_average >= 8) {
+    console.log(movie.title)
     }
-}
+})

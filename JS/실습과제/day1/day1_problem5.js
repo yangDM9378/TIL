@@ -19,4 +19,3 @@ for (const k of participantNums ) {
 // 3
 // 100
 // 62
-
