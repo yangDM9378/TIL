@@ -58,7 +58,17 @@
   </section>
   
   <script>
-		// 이곳에 코드를 작성합니다.
+    const btn_click = document.querySelector('.myButton')
+    btn_click.addEventListener('click', function (event) {
+      const inputTag = document.querySelector('.myInputs')
+
+      if (inputTag.value === '학생들 모두 화이팅'){
+        alert('여러분을 응원합니다:)')
+      } else {
+        alert('다시 시도해 주세요:)')
+      }
+      inputTag.value = null
+    })
   </script>
 </body>
 </html>

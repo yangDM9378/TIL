@@ -62,8 +62,12 @@
   <script>
     const inputTags = document.querySelectorAll('input')
     inputTags.forEach(inputTag => {
-      let inputTag = document.getElementById('myInputs')
+      inputTag.setAttribute('class','myInputs')
     })
+    const buttonTag = document.querySelector('button')
+    buttonTag.setAttribute('class', 'myButton')
+    buttonTag.innerText = 'Log in'
+    console.log(buttonTag)
 </script>
 </body>
 </html>
