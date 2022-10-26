@@ -41,10 +41,11 @@
       div#time의 내부 content가 매 초마다 갱신되어 
       화면에 출력될 수 있도록 formatTime 함수를 완성하시오.
     */
-    document.style.body.backgroundImage = 
+     
     // lodash 를 활용하여 1.jpg ~ 6.jpg 중 하나의 경로로 body의 backgroundImage url을 설정
     // hint
     let rannum = _.random(1,7)
+    document.body.style.backgroundImage = `url('./images/${rannum}.jpg')`
     const timeDiv = document.querySelector('#time')
     const formatTime = function () {
       // 아래 now를 활용하여 timeDiv의 innerText를 적절하게 re-format
@@ -63,6 +64,7 @@
         timeDiv.innerText = timevalue
       }
     }
+    
     
     // 1초에 한번 formatTime 함수 실행
     setInterval(formatTime, 1000)
