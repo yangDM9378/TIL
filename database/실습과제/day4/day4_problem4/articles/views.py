@@ -8,7 +8,6 @@ from .forms import ArticleForm, CommentForm
 @require_safe
 def index(request):
     articles = Article.objects.order_by('-pk')
-    
     context = {
         'articles': articles,
     }
