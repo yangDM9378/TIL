@@ -10,8 +10,11 @@
   <div id="app">
     <h1>Popular Movies</h1>
     <div>
-      <li v-for = "(value, index) in movieinfo.results" :key="index" v-if = "value.vote_average >= 8">{{ value.title }}</li>
+      <ul v-for = "movie in movieinfo.results" :key="movie.id">
+        <li v-if = "movie.vote_average >= 8">{{ movie.title }}</li>
+      </ul>
     </div>
+
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>

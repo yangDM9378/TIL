@@ -9,17 +9,28 @@
 <body>
   <div id="app">
     <h1>MBTI 검사기</h1>
-    <input type="text>
-    <button">결과 보기</button>
+    <input v-model="mbti" type="text">
+    <button @click="mbtisc" >결과 보기</button>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script>
     const app = new Vue({
       el: '#app',
       data: {
-        allTypes : ['istj', 'isfj', 'infj', 'intj', 'istp', 'isfp', 'infp', 'intp', 'estp', 'esfp', 'enfp', 'entp', 'estj', 'esfj', 'enfj', 'entj']
+        allTypes : ['istj', 'isfj', 'infj', 'intj', 'istp', 'isfp', 'infp', 'intp', 'estp', 'esfp', 'enfp', 'entp', 'estj', 'esfj', 'enfj', 'entj'],
+        mbti : '',
+        url : 'https://www.16personalities.com/ko/성격유형'
+    
       },
       methods: {
+        mbtisc: function(){
+          if (this.allTypes.includes(this.mbti.toLowerCase())) {
+            const newurl = `${this.url}-${this.mbti}`
+            window.open(newurl)
+          } else {
+            alert('no')
+          }
+        }
       }
     })
   </script>
