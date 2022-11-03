@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>AppChild</h1>
-    <input type="text" v-model = 'appChild'>
+    <input type="text" v-model = 'appChild' @input="AppChildInput">
       <h3>appData: {{ appData }}</h3>
       <h3>parentData: {{ appParent }}</h3>
       <h3>childData: {{ appChild }}</h3>
@@ -20,7 +20,10 @@ export default {
       appChild: null,
       }
   },
-  method: {
+  methods: {
+    AppChildInput: function (){
+      this.$emit('app-child-input', this.appChild)
+    }
   }
 }
 </script>

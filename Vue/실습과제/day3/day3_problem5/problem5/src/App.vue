@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <h1>APP</h1>
-    <input type="text" v-model = 'appData' >
+    <input type="text" v-model='appData' >
     <h3>parentData: {{ parentData }}</h3>
-    <h3>childData: {{}}</h3>
+    <h3>childData: {{ childData }}</h3>
     <AppParent 
     :app-data="appData"
      @app-parent-input="getParentData"
+     @app-child-input="getChildData"
      />
   </div>
 </template>
@@ -23,11 +24,15 @@ export default {
     return {
       appData: null,
       parentData: null,
+      childData: null,
     }
   },
   methods: {
     getParentData: function(appParent) {
       this.parentData = appParent
+    },
+    getChildData: function(ChildData) {
+      this.childData = ChildData
     }
   }
 }
