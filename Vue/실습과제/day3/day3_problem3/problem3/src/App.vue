@@ -8,7 +8,6 @@
 </template>
 
 <script>
-
 export default {
     methods: {
       HomeMovie: function () {

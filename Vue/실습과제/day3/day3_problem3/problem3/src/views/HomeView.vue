@@ -8,13 +8,10 @@
 </template>
 
 <script>
-
-
 export default {
   name: 'NocolorView',
 }
 </script>
-
 <style>
   .box {
     height: 150px;
