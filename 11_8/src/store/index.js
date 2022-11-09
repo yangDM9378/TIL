@@ -59,11 +59,42 @@ export default new Vuex.Store({
         price: 500,
         count: 0,
       },
-    ]
+    ],
+    price:0,
+    price_list:[],
+    cnt:0
   },
 
   getters: {
-
+    totalOrderCount(state) {
+      return state.orderList.length
+    },
+    totalOrderPrice(state) {
+      state.price=0
+      state.orderList.forEach((order) =>{
+        const menu_price=order.pickMenu[0].price
+        const size_price=order.pickSize[0].price
+        const s_price=order.pickoption[0].price*order.pickoption[0].count
+        const b_price=order.pickoption[1].price*order.pickoption[1].count
+        const k_price=order.pickoption[2].price*order.pickoption[2].count
+        const total=menu_price+size_price+s_price+b_price+k_price
+        state.price=state.price+total
+      })
+      return state.price
+    },
+    OrderPrice(state) {
+      state.price_list=[]
+      state.orderList.forEach((order) =>{
+        const menu_price=order.pickMenu[0].price
+        const size_price=order.pickSize[0].price
+        const s_price=order.pickoption[0].price*order.pickoption[0].count
+        const b_price=order.pickoption[1].price*order.pickoption[1].count
+        const k_price=order.pickoption[2].price*order.pickoption[2].count
+        const total=menu_price+size_price+s_price+b_price+k_price
+        state.price_list.push(total)
+      })
+      return state.price_list
+    }
   },
 
   mutations: {
@@ -120,9 +151,11 @@ export default new Vuex.Store({
         pickMenu: pickMenu,
         pickSize: pickSize,
         pickoption: JSON.parse(JSON.stringify(pickoption)),
+        cnt:state.cnt
       }
 
       state.orderList.push(obj)
+      state.cnt++
     }
   },
 

@@ -4,8 +4,9 @@
     <p>{{ order.pickMenu[0].title }}</p>
     <p>사이즈:{{ order.pickSize[0].name }}</p>
     <p v-for='(option,index) in order.pickoption'
-    :key='index'>{{ option.type }} {{ option.count }}</p>
-
+    :key='index'>{{ option.type }} {{ option.count }}
+    </p>
+    <p>가격: {{ OrderPrice[order.cnt] }}</p>
   </li>
 </template>
 
@@ -16,8 +17,12 @@ export default {
     order: Object,
   },
   computed: {
-    // totalPrice: function () {
-    // },
+    idx: function () {
+      return this.$store.state.cnt
+    },
+    OrderPrice: function () {
+      return this.$store.getters.OrderPrice
+    }
   },
 }
 </script>

@@ -12,9 +12,8 @@
     :order='order'
     />
       <h3>주문 내역: </h3>
-      <p>총 갯수건:{{ orderList.length }}건 전체 가격원 </p>
+      <p>총 갯수건:{{ totalOrderCount }}건 전체 가격원 {{ totalOrderPrice }} </p>
     </div>
-    {{ orderList }}
   </div>
 </template>
 
@@ -29,10 +28,12 @@ export default {
     orderList: function () {
       return this.$store.state.orderList
     },
-    // totalOrderCount: function () {
-    // },
-    // totalOrderPrice: function () {
-    // },
+    totalOrderCount: function () {
+      return this.$store.getters.totalOrderCount
+    },
+    totalOrderPrice: function () {
+      return this.$store.getters.totalOrderPrice
+    },
   },
   methods: {
     addorder: function() {
