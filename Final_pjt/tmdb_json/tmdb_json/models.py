@@ -14,4 +14,5 @@ class Movie(models.Model):
     vote_avg=models.IntegerField()
     overview = models.TextField()
     poster_path = models.TextField()
+    backdrop_path = models.TextField(null=True)
     genres = models.ManyToManyField(Genre, related_name='mo')

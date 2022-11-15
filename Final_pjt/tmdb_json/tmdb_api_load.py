@@ -18,8 +18,7 @@ def get_movie_datas():
                     'vote_avg': movie['vote_average'],
                     'overview': movie['overview'],
                     'poster_path': movie['poster_path'],
-                    'genres': movie['genre_ids'],
-                    'backdrop_path': movie['backdrop_path']
+                    'genres': movie['genre_ids']
                 }
 
                 data = {

@@ -11,5 +11,4 @@ from django.shortcuts import render
 def index(request):
     movies = get_list_or_404(Movie)
     serializer = MovieSerializer(movies, many=True)
-    print(type(serializer.data))
     return Response(serializer.data)
