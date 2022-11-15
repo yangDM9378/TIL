@@ -15,6 +15,7 @@ export default new Vuex.Store({
   state: {
     articles: [],
     token: null,
+    myname: null
   },
   getters: {
     isLogin(state) {
@@ -25,9 +26,16 @@ export default new Vuex.Store({
     GET_ARTICLES(state, articles) {
       state.articles = articles
     },
-    SAVE_TOKEN(state, token) {
+    SAVE_TOKEN(state, loaddata) {
+      const token = loaddata.token
+      const name = loaddata.name
       state.token = token
+      state.myname = name
       router.push({ name: 'ArticleView' })
+    },
+    DEL_TOKEN(state) {
+      state.token = null
+      router.push({ name: 'LogInView' })
     }
   },
   actions: {
@@ -72,13 +80,28 @@ export default new Vuex.Store({
         }
       })
         .then((res) => {
-          console.log(res)
-          context.commit('SAVE_TOKEN', res.data.key)
+          const loaddata= {
+            token: res.data.key,
+            name: payload.username
+          }
+          context.commit('SAVE_TOKEN', loaddata)
         })
     },
-    // logout(context){
-      
-    // }
+    logout(context){
+      axios({
+        method: 'post',
+        url: `${API_URL}/accounts/logout/`,
+        headers: {
+          Authorization: `Token ${context.state.token}`
+        }
+      }).then(() => {
+        context.commit('DEL_TOKEN')
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+      // context.commit('DEL_TOKEN')
+    }
   },
   modules: {
   }

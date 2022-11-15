@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{ myname }}
     <h1>Article Page</h1>
     <router-link :to="{ name: 'CreateView' }">[CREATE]</router-link>
     <button v-if='isLogin' @click="Logout">Logout</button>
@@ -18,6 +19,9 @@ export default {
   computed:{
     isLogin() {
       return this.$store.getters.isLogin
+    },
+    myname() {
+      return this.$store.state.myname
     }
   },
   created() {
